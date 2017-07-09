@@ -1,0 +1,30 @@
+{
+  "name": "url-gen",
+  "version": "0.0.0",
+  "description": "",
+  "preferGlobal": true,
+  "main": "index.js",
+  "bin": {
+    "swagger-merger": "url-generator.js"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WindomZ/url-generator.git"
+  },
+  "keywords": [
+    "url",
+    "generator"
+  ],
+  "author": "WindomZ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WindomZ/url-generator/issues"
+  },
+  "homepage": "https://github.com/WindomZ/url-generator#readme"
+}
