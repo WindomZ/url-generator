@@ -5,13 +5,13 @@
   "preferGlobal": true,
   "main": "index.js",
   "bin": {
-    "swagger-merger": "url-generator.js"
+    "swagger-merger": "url-gen.js"
   },
   "engines": {
     "node": ">=6"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc --reporter=lcov --reporter=text-lcov ava"
   },
   "repository": {
     "type": "git",
@@ -21,10 +21,20 @@
     "url",
     "generator"
   ],
-  "author": "WindomZ",
+  "author": "WindomZ <git.windomz@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/WindomZ/url-generator/issues"
   },
-  "homepage": "https://github.com/WindomZ/url-generator#readme"
+  "homepage": "https://github.com/WindomZ/url-generator#readme",
+  "dependencies": {
+    "caporal": "^0.7.0",
+    "js-yaml": "^3.9.0",
+    "url-join": "^2.0.2"
+  },
+  "devDependencies": {
+    "ava": "^0.20.0",
+    "coveralls": "^2.13.1",
+    "nyc": "^11.0.3"
+  }
 }
