@@ -64,4 +64,14 @@ function urlGenerateSync(dir, depth = 0) {
   return urljoin(result.root, ...result.paths);
 }
 
+function* urlGenerate(dir, depth = 0) {
+  return yield urlGenerateSync(dir, depth);
+}
+
 module.exports = urlGenerateSync;
+
+module.exports.promise = (dir, depth = 0) =>
+  new Promise(resolve => {
+    urlGenerate(dir, depth).next();
+    resolve();
+  });

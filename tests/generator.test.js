@@ -79,3 +79,42 @@ test('generator multi-level pass', t => {
     t.fail(e);
   }
 });
+
+test('generator promise pass', t => {
+  gen
+    .promise(
+      path.join(
+        path.dirname(__dirname),
+        'examples',
+        'multi',
+        'level',
+        'nesting'
+      )
+    )
+    .then(r => {
+      t.is(r, 'http://127.0.0.1:8888/m/lv/nesting');
+    })
+    .catch(e => {
+      t.fail(e);
+    });
+
+  gen
+    .promise(
+      path.join(
+        path.dirname(__dirname),
+        'examples',
+        'multi',
+        'level',
+        'nesting'
+      ),
+      2
+    )
+    .then(r => {
+      t.is(r, 'http://127.0.0.1/lv/nesting');
+    })
+    .catch(e => {
+      t.fail(e);
+    });
+
+  t.pass();
+});
