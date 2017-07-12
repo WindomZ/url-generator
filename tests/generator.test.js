@@ -9,11 +9,70 @@ const test = require('ava');
 
 const gen = require('../generator');
 
-test('generator pass', t => {
+test('generator example pass', t => {
   try {
     t.is(
       gen(path.join(path.dirname(__dirname), 'examples')),
-      'http://127.0.0.1:8888/example'
+      'http://127.0.0.1:888/example'
+    );
+    t.pass();
+  } catch (e) {
+    t.fail(e);
+  }
+});
+
+test('generator multi-level pass', t => {
+  try {
+    t.is(
+      gen(path.join(path.dirname(__dirname), 'examples', 'multi')),
+      'http://127.0.0.1:8888/m'
+    );
+    t.pass();
+  } catch (e) {
+    t.fail(e);
+  }
+
+  try {
+    t.is(
+      gen(path.join(path.dirname(__dirname), 'examples', 'multi', 'level')),
+      'http://127.0.0.1:8888/m/lv'
+    );
+    t.pass();
+  } catch (e) {
+    t.fail(e);
+  }
+
+  try {
+    t.is(
+      gen(
+        path.join(
+          path.dirname(__dirname),
+          'examples',
+          'multi',
+          'level',
+          'nesting'
+        )
+      ),
+      'http://127.0.0.1:8888/m/lv/nesting'
+    );
+    t.pass();
+  } catch (e) {
+    t.fail(e);
+  }
+
+  try {
+    t.is(
+      gen(
+        path.join(
+          path.dirname(__dirname),
+          'examples',
+          'multi',
+          'level',
+          'nesting'
+        ),
+        2
+      ),
+      'http://127.0.0.1/lv/nesting'
     );
     t.pass();
   } catch (e) {

@@ -1,0 +1,2 @@
+version: 0.1.0 # version number
+path: lv       # defines the url path of the current directory

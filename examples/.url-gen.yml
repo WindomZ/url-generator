@@ -1,3 +1,3 @@
-version: 0.1.0 # version number
-root: http://127.0.0.1:8888 # defines the url root path
-path: example # defines the url path of the current directory
+version: 0.1.0             # version number
+root: http://127.0.0.1:888 # defines the url root path
+path: example              # defines the url path of the current directory
