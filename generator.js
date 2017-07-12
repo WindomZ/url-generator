@@ -38,11 +38,15 @@ function fileWalk(dir, regexp) {
   return list;
 }
 
-function urlGenerateSync(dir) {
-  let result = { root: 'http：//127.0.0.1', paths: [] };
-  let dirs = dirWalk(dir);
+function urlGenerateSync(dir, depth = 0) {
+  let result = { root: 'http://127.0.0.1', paths: [] };
+  let dirs = dirWalk(dir, depth);
   dirs.forEach(d => {
     let files = fileWalk(d, /^\.url-gen(\.(yml|yaml))?$/);
+    if (files.length === 0) {
+      result.paths.push(path.basename(dir));
+      return;
+    }
     files.forEach(file => {
       let doc = yaml.safeLoad(fs.readFileSync(file, 'utf8'));
       doc.version = doc.version || '';
