@@ -80,8 +80,8 @@ test('generator multi-level pass', t => {
   }
 });
 
-test('generator promise pass', t => {
-  gen
+test('generator promise pass', async t => {
+  await gen
     .promise(
       path.join(
         path.dirname(__dirname),
@@ -98,7 +98,7 @@ test('generator promise pass', t => {
       t.fail(e);
     });
 
-  gen
+  await gen
     .promise(
       path.join(
         path.dirname(__dirname),
@@ -111,10 +111,9 @@ test('generator promise pass', t => {
     )
     .then(r => {
       t.is(r, 'http://127.0.0.1/lv/nesting');
+      t.pass();
     })
     .catch(e => {
       t.fail(e);
     });
-
-  t.pass();
 });

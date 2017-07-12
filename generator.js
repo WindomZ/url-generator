@@ -44,7 +44,7 @@ function urlGenerateSync(dir, depth = 0) {
   dirs.forEach(d => {
     let files = fileWalk(d, /^\.url-gen(\.(yml|yaml))?$/);
     if (files.length === 0) {
-      result.paths.push(path.basename(dir));
+      result.paths.push(path.basename(d));
       return;
     }
     files.forEach(file => {
@@ -64,14 +64,13 @@ function urlGenerateSync(dir, depth = 0) {
   return urljoin(result.root, ...result.paths);
 }
 
-function* urlGenerate(dir, depth = 0) {
+function* urlGenerate(dir, depth) {
   return yield urlGenerateSync(dir, depth);
 }
 
 module.exports = urlGenerateSync;
 
-module.exports.promise = (dir, depth = 0) =>
+module.exports.promise = (dir, depth) =>
   new Promise(resolve => {
-    urlGenerate(dir, depth).next();
-    resolve();
+    resolve(urlGenerate(dir, depth).next().value);
   });
