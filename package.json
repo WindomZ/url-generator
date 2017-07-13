@@ -1,11 +1,11 @@
 {
   "name": "url-gen",
-  "version": "0.0.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Generates URL address based on the directory.",
   "preferGlobal": true,
   "main": "index.js",
   "bin": {
-    "swagger-merger": "url-gen.js"
+    "url-gen": "url-gen.js"
   },
   "engines": {
     "node": ">=6"
