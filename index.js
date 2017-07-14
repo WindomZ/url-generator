@@ -4,3 +4,4 @@
 'use strict';
 
 module.exports = require('./generator');
+module.exports.init = require('./init');

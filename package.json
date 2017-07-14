@@ -29,6 +29,8 @@
   "homepage": "https://github.com/WindomZ/url-generator#readme",
   "dependencies": {
     "caporal": "^0.7.0",
+    "co": "^4.6.0",
+    "inquirer": "^3.2.0",
     "js-yaml": "^3.9.0",
     "url-join": "^2.0.2"
   },
