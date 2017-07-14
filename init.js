@@ -10,7 +10,7 @@ const co = require('co');
 const yaml = require('js-yaml');
 const inquirer = require('inquirer');
 
-function* init(dir) {
+function* init(dir, input = true) {
   let filePath = path.join(dir, '.url-gen.yml');
 
   try {
@@ -24,30 +24,34 @@ function* init(dir) {
     path: path.basename(dir),
   };
 
-  let input = yield inquirer.prompt([
-    {
-      type: 'input',
-      name: 'root',
-      message: 'Please enter the url root path:',
-      default: 'No',
-    },
-  ]);
-  if (input.root === 'No') {
+  let answer = input
+    ? yield inquirer.prompt([
+        {
+          type: 'input',
+          name: 'root',
+          message: 'Please enter the url root path:',
+          default: 'No',
+        },
+      ])
+    : { root: 'No' };
+  if (answer.root === 'No') {
     delete obj.root;
   } else {
-    obj.root = input.root.trim();
+    obj.root = answer.root.trim();
   }
 
-  input = yield inquirer.prompt([
-    {
-      type: 'input',
-      name: 'path',
-      message: 'Please enter the url path of the current directory:',
-      default: 'Default',
-    },
-  ]);
-  if (input.path !== 'Default') {
-    obj.path = input.path.trim();
+  answer = input
+    ? yield inquirer.prompt([
+        {
+          type: 'input',
+          name: 'path',
+          message: 'Please enter the url path of the current directory:',
+          default: 'Default',
+        },
+      ])
+    : { path: 'Default' };
+  if (answer.path !== 'Default') {
+    obj.path = answer.path.trim();
   }
 
   fs.writeFileSync(filePath, yaml.safeDump(obj), 'utf8');
@@ -55,4 +59,4 @@ function* init(dir) {
   return true;
 }
 
-module.exports = dir => co.wrap(init)(dir);
+module.exports = (dir, input) => co.wrap(init)(dir, input);
