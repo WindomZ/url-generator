@@ -33,6 +33,7 @@ $ url-gen -h
    USAGE
 
      url-gen [dir]
+     url-gen init
 
    ARGUMENTS
 
@@ -55,10 +56,12 @@ $ url-gen -h
 
 You need to customize the `.url-gen.yml` file, the rules configured like this: 
 ```yaml
-version: 1.0.0             # version number, optional
+version: 1.0               # version number, optional
 root: http://127.0.0.1:888 # defines the url root path, optional, default: http://127.0.0.1
 path: example              # defines the url path of the current directory, optional
 ```
+
+You can run ``url-gen init`` to help create.
 
 ## Example
 
@@ -66,6 +69,9 @@ path: example              # defines the url path of the current directory, opti
 url-gen            # working in the local directory.
 url-gen examples   # working in the `./examples/` directory.
 url-gen ~/examples # working in the `~/examples/` directory.
+
+url-gen i          # creates the `.url-gen.yml` file.
+url-gen init       # creates the `.url-gen.yml` file.
 ```
 
 ## Environment
