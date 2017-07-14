@@ -4,6 +4,7 @@
  */
 'use strict';
 
+const os = require('os');
 const path = require('path');
 
 const prog = require('caporal');
@@ -19,7 +20,7 @@ prog
     let dir = path.resolve(args.dir || process.cwd());
     urlgen(dir, options.up)
       .then(r => {
-        console.log(r);
+        process.stdout.write(r + os.EOL);
       })
       .catch(e => {
         console.error(e.message);
@@ -27,12 +28,14 @@ prog
   });
 
 prog
-  .command('init', 'Creates a customization config file')
+  .command('init', 'Creates a customization .url-gen.yml file')
   .alias('i')
   .action(() => {
     init(process.cwd())
       .then(r => {
-        console.log(r);
+        process.stdout.write(
+          '.url-gen.yml ' + (r ? 'creates success!' : 'exists!') + os.EOL
+        );
       })
       .catch(e => {
         console.error(e.message);
