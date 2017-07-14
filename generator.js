@@ -6,6 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const co = require('co');
 const yaml = require('js-yaml');
 const urljoin = require('url-join');
 
@@ -48,7 +49,7 @@ function urlGenerateSync(dir, depth = 0) {
       return;
     }
     files.forEach(file => {
-      let doc = yaml.safeLoad(fs.readFileSync(file, 'utf8'));
+      let doc = yaml.safeLoad(fs.readFileSync(file, 'utf8'), 'utf8');
       doc.version = doc.version || '';
       switch (doc.version) {
         default:
@@ -65,12 +66,9 @@ function urlGenerateSync(dir, depth = 0) {
 }
 
 function* urlGenerate(dir, depth) {
-  return yield urlGenerateSync(dir, depth);
+  return urlGenerateSync(dir, depth);
 }
 
 module.exports = urlGenerateSync;
 
-module.exports.promise = (dir, depth) =>
-  new Promise(resolve => {
-    resolve(urlGenerate(dir, depth).next().value);
-  });
+module.exports.promise = (dir, depth) => co.wrap(urlGenerate)(dir, depth);
