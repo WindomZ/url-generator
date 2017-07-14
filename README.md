@@ -1,5 +1,6 @@
 # url-generator
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/WindomZ/url-generator.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/WindomZ/url-generator.svg?branch=master)](https://travis-ci.org/WindomZ/url-generator)
 [![Coverage Status](https://coveralls.io/repos/github/WindomZ/url-generator/badge.svg?branch=master)](https://coveralls.io/github/WindomZ/url-generator?branch=master)
 [![Dependency](https://david-dm.org/WindomZ/url-generator.svg)](https://david-dm.org/WindomZ/url-generator)
