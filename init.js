@@ -10,6 +10,14 @@ const co = require('co');
 const yaml = require('js-yaml');
 const inquirer = require('inquirer');
 
+/**
+ * Creates a customization .url-gen.yml file.
+ *
+ * @param {string} dir
+ * @param {boolean} [input]
+ * @return {boolean}
+ * @api public
+ */
 function* init(dir, input = true) {
   let filePath = path.join(dir, '.url-gen.yml');
 
@@ -24,32 +32,26 @@ function* init(dir, input = true) {
     path: path.basename(dir),
   };
 
-  let answer = input
-    ? yield inquirer.prompt([
-        {
-          type: 'input',
-          name: 'root',
-          message: 'Please enter the url root path:',
-          default: 'No',
-        },
-      ])
-    : { root: 'No' };
+  let question = {
+    type: 'input',
+    name: 'root',
+    message: 'Please enter the url root path:',
+    default: 'No',
+  };
+  let answer = input ? yield inquirer.prompt([question]) : { root: 'No' };
   if (answer.root === 'No') {
     delete obj.root;
   } else {
     obj.root = answer.root.trim();
   }
 
-  answer = input
-    ? yield inquirer.prompt([
-        {
-          type: 'input',
-          name: 'path',
-          message: 'Please enter the url path of the current directory:',
-          default: 'Default',
-        },
-      ])
-    : { path: 'Default' };
+  question = {
+    type: 'input',
+    name: 'path',
+    message: 'Please enter the url path of the current directory:',
+    default: 'Default',
+  };
+  answer = input ? yield inquirer.prompt([question]) : { path: 'Default' };
   if (answer.path !== 'Default') {
     obj.path = answer.path.trim();
   }

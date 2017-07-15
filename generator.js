@@ -39,7 +39,15 @@ function fileWalk(dir, regexp) {
   return list;
 }
 
-function urlGenerateSync(dir, depth = 0) {
+/**
+ * Generates URL address based on the directory.
+ *
+ * @param {string} dir
+ * @param {int} [depth]
+ * @return {string}
+ * @api public
+ */
+function urlGenerate(dir, depth = 0) {
   let result = { root: 'http://127.0.0.1', paths: [] };
   let dirs = dirWalk(dir, depth);
   dirs.forEach(d => {
@@ -65,10 +73,6 @@ function urlGenerateSync(dir, depth = 0) {
   return urljoin(result.root, ...result.paths);
 }
 
-function* urlGenerate(dir, depth) {
-  return urlGenerateSync(dir, depth);
-}
-
-module.exports = urlGenerateSync;
+module.exports = urlGenerate;
 
 module.exports.promise = (dir, depth) => co.wrap(urlGenerate)(dir, depth);
