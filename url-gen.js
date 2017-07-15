@@ -23,7 +23,7 @@ prog
         process.stdout.write(r + os.EOL);
       })
       .catch(e => {
-        console.error(e.message);
+        process.stderr.write(e.message + os.EOL);
       });
   });
 
@@ -38,7 +38,7 @@ prog
         );
       })
       .catch(e => {
-        console.error(e.message);
+        process.stderr.write(e.message + os.EOL);
       });
   });
 
