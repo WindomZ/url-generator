@@ -31,7 +31,7 @@
     "caporal": "^0.8.0",
     "co": "^4.6.0",
     "inquirer": "^4.0.0",
-    "js-yaml": "^3.9.0",
+    "js-yaml": "^3.10.0",
     "url-join": "^2.0.2"
   },
   "devDependencies": {
