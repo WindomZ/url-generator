@@ -30,7 +30,7 @@
   "dependencies": {
     "caporal": "^0.10.0",
     "co": "^4.6.0",
-    "inquirer": "^5.0.0",
+    "inquirer": "^6.0.0",
     "js-yaml": "^3.10.0",
     "url-join": "^4.0.0"
   },
