@@ -35,7 +35,7 @@
     "url-join": "^4.0.0"
   },
   "devDependencies": {
-    "ava": "^1.2.1",
+    "ava": "^2.0.0",
     "coveralls": "^3.0.2",
     "eslint": "^5.14.1",
     "eslint-config-prettier": "^4.0.0",
