@@ -30,17 +30,17 @@
   "dependencies": {
     "caporal": "^1.2.0",
     "co": "^4.6.0",
-    "inquirer": "^6.4.1",
+    "inquirer": "^6.5.0",
     "js-yaml": "^3.13.1",
     "url-join": "^4.0.1"
   },
   "devDependencies": {
     "ava": "^2.2.0",
-    "coveralls": "^3.0.4",
-    "eslint": "^6.0.1",
+    "coveralls": "^3.0.5",
+    "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
-    "husky": "^3.0.0",
-    "lint-staged": "^9.1.0",
+    "husky": "^3.0.1",
+    "lint-staged": "^9.2.0",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2"
   }
